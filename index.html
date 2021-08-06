@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <title>Frontend Mentor | Rock, Paper, Scissors</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <span>ROCK</span>
+        <span>PAPER</span>
+        <span>SCISSORS</span>
+      </div>
+      <div class="score_container">
+        <h4>SCORE</h4>
+        <p id="score">0</p>
+      </div>
+    </header>
+    <main id="main">
+      <button class="btn_choice real paper " data-choice="paper" > <span class="img-container"> <img src="./images/icon-paper.svg" alt=""></span></button> 
+      <button class="btn_choice real scissors" data-choice="scissors"><span class="img-container"><img src="./images/icon-scissors.svg" alt=""></span></button>
+      <button class="btn_choice real rock" data-choice="rock"><span class="img-container"><img src="./images/icon-rock.svg" alt=""></span></button>
+    </main> 
+    <div class="Rules" id="ruleswindow">
+      <div class="title_close">
+        <h1>RULES</h1>
+        <button id="close_button"><img src="./images/icon-close.svg" alt=""></button>
+      </div>
+      <img src="./images/image-rules.svg" alt="">
+    </div>
+    <button id="Rules">RULES</button>
+
+    <div class="result" id="result">
+      <div>
+        <h2>You picked</h2>
+        <button class="btn_choice paper" id="user_select"  > <span class="img-container"> <img src="./images/icon-paper.svg" alt=""></span></button>
+      </div>
+      <div id="responsive">
+        <span id="text"></span>
+        <button id="replay">Play again</button>
+      </div>
+      <div>
+        <h2>The house picked</h2>
+        <button class="btn_choice scissors" id="cpu_select"><span class="img-container"><img src="./images/icon-scissors.svg" alt=""></span></button>
+      </div>
+    </div>
+
+   
+   
+   
+   <script>
+
+        const choices = ['paper','rock','scissors'];
+        const buttons = document.querySelectorAll('.real');
+        const main = document.getElementById('main');
+        const result = document.getElementById('result');
+        const replay = document.getElementById('replay');
+        const user_selection = document.getElementById('user_select');
+        const cpu_selection = document.getElementById('cpu_select');
+        const closeButton = document.getElementById('close_button');
+        const RulesButton = document.getElementById('Rules');
+        const RulesWindow = document.getElementById('ruleswindow');
+
+        var user_choice , score = 0 ;
+
+        // adding an event for each button 
+        buttons.forEach(elem => { 
+            elem.addEventListener('click', () => {
+                user_choice = elem.getAttribute('data-choice');
+                who_is_winner(); 
+                main.style.display = 'none';
+                result.style.display = 'flex';      
+            });
+        });
+
+        closeButton.addEventListener('click',()=>{
+            RulesWindow.style.display = 'none';
+        })
+
+        RulesButton.addEventListener('click',()=>{
+          RulesWindow.style.display = 'flex';
+        })
+        
+
+        function update_score (value)
+        {
+          score+= value;
+          score_elem = document.getElementById('score');
+          score_elem.innerHTML = score;
+        }
+
+        function who_is_winner ()
+        {
+          const cpu_choice = random_choice_picker();
+          const text = document.getElementById('text');
+          update_result(user_selection,user_choice);
+          update_result(cpu_selection,cpu_choice);
+          if (user_choice === cpu_choice){
+            text.innerText = 'DRAW';
+          }
+          else if ((user_choice === 'rock' && cpu_choice==='scissors') || (user_choice=== 'scissors' && cpu_choice==='paper') || (user_choice==='paper' && cpu_choice==='rock')) {
+            update_score(1);
+            text.innerText = 'YOU WON';
+          }
+          else{
+            text.innerText = 'YOU LOST';
+            update_score(-1);
+          }
+        }
+
+        function random_choice_picker ()  // a random choice picker for the computer
+        {
+            return choices[ Math.floor(Math.random() * 3) ];
+        }
+
+        replay.addEventListener('click',()=>{
+            main.style.display = 'initial';
+            result.style.display = 'none';
+        })
+        
+        function update_result (selection,choice)
+        {
+            // reseting the class name of our selected object
+            selection.classList.remove('paper');
+            selection.classList.remove('scissors');
+            selection.classList.remove('rock');
+
+            selection.classList.add(`${choice}`);
+
+            // updating the IMGs of the choices
+            selection.querySelector('img').src = `./images/icon-${choice}.svg`;
+            
+        }
+        
+
+    </script>
+  </body>
+</html>

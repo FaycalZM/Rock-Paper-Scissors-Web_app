@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background: radial-gradient(circle at 50% 1%, hsl(214, 47%, 23%) , hsl(237, 49%, 15%) );
+    min-height: 100vh;
+    font-family: 'Barlow Semi Condensed',sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+   
+}
+main
+{
+    background-color:transparent;
+    width: 360px;
+    height: 360px;
+    position: relative;
+    margin-top: 20px;
+    
+}
+main::after
+{
+    content: '';
+    background-image: url('./images/bg-triangle.svg');
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    z-index: -1;
+    top: 55%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    
+}
+.logo
+{
+    
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    
+}
+.logo span
+{
+    font-weight: bolder;
+    font-size: 24px;
+    margin: -0.3rem;
+}
+header
+{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    padding-right: 1rem;
+
+    border: 1px solid gray;
+    margin: 2rem auto;
+    width: 60%;
+    border-radius: 10px;
+}
+
+.score_container
+{
+    color: hsl(229, 64%, 46%);
+    border: 1px solid black;
+    background: linear-gradient(
+        to  bottom,
+        rgba(255,255,255,1),
+        rgba(255,255,255,0.8)
+    );
+    padding: 0.7rem 3.5rem;
+    padding-bottom: 0.2rem ;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+.score_container h4
+{
+    font-size: 10px;
+    letter-spacing: 0.15rem;
+    
+}
+#score
+{
+    font-size: 3rem;
+    color: hsl(229, 25%, 31%);
+    
+}
+
+#Rules
+{
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 5px 30px;
+    border-radius: 6px;
+    color: white;
+    font-family: 'Barlow Semi Condensed',sans-serif;    
+    position: absolute;
+    right: 25px;
+    bottom: 30px;
+    font-size: 18px;
+    letter-spacing: 0.1rem;
+}
+
+.btn_choice
+{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: inset 0px -6px 2px 1.5px rgba(0,0,0,0.4)  ;
+}
+
+.btn_choice.real:hover
+{
+    cursor: pointer;
+}
+.btn_choice.real:active
+{
+    transform: scale(0.9);
+}
+
+.paper
+{
+    background: linear-gradient(
+        to left bottom,
+        hsl(230, 89%, 62%) ,
+        hsl(230, 89%, 65%)
+    );
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.scissors
+{
+    background: linear-gradient(
+        to left bottom,
+        hsl(39, 89%, 49%) ,
+        hsl(40, 84%, 53%)
+    );
+    position: absolute;
+    left: 58.3%;
+    
+}
+.rock
+{
+    background: linear-gradient(
+        to left bottom,
+        hsl(349, 71%, 52%) ,
+        hsl(349, 70%, 56%)
+    );
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    
+}
+
+.img-container
+{
+    width: 120px;
+    height: 120px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0px 4px 2px 1.5px rgba(0,0,0,0.25);
+    
+}
+
+#replay
+{
+    background: linear-gradient(
+        to left bottom,
+        rgba(255,255,255,1),
+        rgba(255,255,255,0.9)
+    );
+    border: 1px solid white;
+    padding: 8px 40px;
+    border: none;
+    border-radius: 6px;
+    color: rgba(255,20,20,0.7);
+    font-family: 'Barlow Semi Condensed',sans-serif;    
+    
+   
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.1rem;
+    margin-left: 1.5rem;
+}
+#replay:hover
+{
+    cursor: pointer;
+    
+}
+
+.result
+{
+    display: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 90%;
+    text-align: center;
+}
+
+.result .btn_choice
+{
+    transform: scale(1.3);
+    position: static;
+}
+
+
+
+.result div h2
+{
+    color: white;
+    margin : 2rem 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+#text
+{
+    color: white;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 2.6rem; 
+}
+.result div
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+.Rules
+{
+    
+    width: 50%;
+    border-radius: 10px;
+    padding: 30px 40px;
+    background-color: whitesmoke;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    
+    justify-content: center;
+
+    
+}
+.title_close
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin-top: -5px;
+    position: relative;
+}
+.title_close button
+{
+    position: absolute;
+    left: 90%;
+    bottom:60% ;
+    
+    border : none;
+    background-color: transparent;
+}
+.title_close h1
+{
+    margin-bottom: 10%;
+    color: hsl(229, 25%, 31%);
+    
+}
+
+
+#Rules:hover
+{
+    cursor: pointer;
+}
+#close_button:hover
+{
+    cursor: pointer;
+}
+
+
+@media (max-width : 700px) {
+    #responsive {
+        order: 1;
+        margin-top: 50px;
+        margin-left: -50px;
+    }
+    .result .btn_choice
+     {
+        transform: scale(1);
+        position: static;
+     }
+     .result
+     {
+         width: 500px;
+     }
+}
+
+
