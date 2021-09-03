@@ -255,7 +255,7 @@ header
 {
     
     width: 40%;
-    height : 60%;
+    height : 80%;
     border-radius: 10px;
     padding: 30px 40px;
     background-color: whitesmoke;
@@ -265,11 +265,9 @@ header
     transform: translate(-50%, -50%);
     display: none;
     flex-direction: column;
-    
-    justify-content: center;
-
-    
+    justify-content: center;   
 }
+
 .title_close
 {
     display: flex;
@@ -320,6 +318,16 @@ header
      .result
      {
          width: 500px;
+     }
+     .Rules {
+         height: 50%;
+     }
+     .Rules img {
+         transform: scale(1.5);
+         margin-top: 30px;
+     }
+     .title_close h1  {
+         margin-left: 0px;
      }
 }
 
